@@ -1,0 +1,36 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>com.graykode.foundry</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>Foundry</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="nlkey2022@gmail.com" url="https://github.com/graykode">graykode</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description><![CDATA[
+        <p>Run <b>Foundry</b> commands within IntelliJ IDEA, simply click the button.</p>
+        <p>To setup foundry please check <a title="instructions on Github" href="https://book.getfoundry.sh/getting-started/installation">instructions on Github</a></p>
+        <p>Please report any issues or feature requests on the <a title="tracker" href="https://github.com/graykode/intellij-foundry/issues">tracker</a></p>
+]]>
+    </description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <depends>me.serce.solidity</depends>
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+        <configurationType implementation="com.graykode.foundry.run.FoundryConfigurationType"/>
+        <runConfigurationProducer implementation="com.graykode.foundry.run.FoundryRunConfigProducer" />
+        <runLineMarkerContributor language="Solidity" implementationClass="com.graykode.foundry.run.FoundryTestRunLineMarkerProvider"/>
+    </extensions>
+</idea-plugin>
